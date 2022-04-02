@@ -1,15 +1,38 @@
-// import { Component } from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-export default function NavBar() {
-  return (
-    <ul>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to="/people">People</Link>
-      </li>
-    </ul>
-  );
+export default class Navbar extends Component {
+  render() {
+    return (
+      <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
+        <Link to="/" className="navbar-brand">
+          People Tracker
+        </Link>
+        <div className="collpase navbar-collapse">
+          <ul className="navbar-nav mr-auto">
+            <li className="navbar-item">
+              <Link to="/" className="nav-link">
+                Home
+              </Link>
+            </li>
+            <li className="navbar-item">
+              <Link to="/people" className="nav-link">
+                People
+              </Link>
+            </li>
+            <li className="navbar-item">
+              <Link to="/people/add" className="nav-link">
+                Create Person
+              </Link>
+            </li>
+            <li className="navbar-item">
+              <Link to="/documents/add" className="nav-link">
+                Create Document
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    );
+  }
 }

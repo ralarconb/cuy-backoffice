@@ -1,65 +1,86 @@
-import React, { useState, useEffect } from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-// let people = [];
+const Person = (props) => (
+  <tr>
+    <td>{props.person.familyname}</td>
+    <td>{props.person.forename}</td>
+    <td>{props.person.dic}</td>
+    <td>{props.person.din}</td>
+    <td>
+      <Link to={"/edit/" + props.person._id}>Edit</Link> |{" "}
+      <a
+        href="#"
+        onClick={() => {
+          props.deleteExercise(props.person._id);
+        }}
+      >
+        Delete
+      </a>
+    </td>
+  </tr>
+);
 
-// function exerciseList() {
-//   return people.map((person) => {
-//     console.log(person.name);
-//     return (
-//       <>currentexercise.name</>
-//       // <Exercise
-//       //   exercise={currentexercise}
-//       //   deleteExercise={this.deleteExercise}
-//       //   key={currentexercise._id}
-//       // />
-//     );
-//   });
-// }
+export default class People extends Component {
+  constructor(props) {
+    super(props);
 
-function getPeople() {
-  axios
-    .get("http://localhost:5000/people/")
-    .then((response) => {
-      return response.data;
-    })
-    .catch((error) => {
-      console.log(error);
+    this.deleteExercise = this.deleteExercise.bind(this);
+
+    this.state = { people: [] };
+  }
+
+  componentDidMount() {
+    axios
+      .get("http://localhost:5000/people/")
+      .then((response) => {
+        this.setState({ people: response.data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  deleteExercise(id) {
+    axios.delete("http://localhost:5000/people/" + id).then((response) => {
+      console.log(response.data);
     });
-}
 
-export default function People() {
-  const [value, setValue] = useState([]);
-  let people = [];
-  axios
-    .get("http://localhost:5000/people/")
-    .then((response) => {
-      // console.log(response.data);
-      // people = response.data;
-      // setValue(response.data);
-      console.log(people);
-    })
-    .catch((error) => {
-      console.log(error);
+    this.setState({
+      exercises: this.state.people.filter((el) => el._id !== id),
     });
-  console.log(people);
-  return (
-    <div>
-      <h3>Logged People</h3>
-      <table className="table">
-        <thead className="thead-light">
-          <tr>
-            <th>Username</th>
-            <th>Description</th>
-            <th>Duration</th>
-            <th>Date</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        {/* <tbody>{exerciseList()}</tbody> */}
-      </table>
-      <Link to="/">Back home</Link>
-    </div>
-  );
+  }
+
+  peopleList() {
+    return this.state.people.map((person) => {
+      return (
+        <Person
+          person={person}
+          deletePerson={this.deletePerson}
+          key={person._id}
+        />
+      );
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <h3>Logged People</h3>
+        <table className="table">
+          <thead className="thead-light">
+            <tr>
+              <th>Family Name</th>
+              <th>Fore Name</th>
+              <th>Document Code</th>
+              <th>Document Number</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>{this.peopleList()}</tbody>
+        </table>
+      </div>
+    );
+  }
 }

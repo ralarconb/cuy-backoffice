@@ -22,7 +22,6 @@ const personSchema = new Schema(
       type: Number,
       required: true,
       unique: false,
-      trim: true,
     },
     din: {
       type: String,
