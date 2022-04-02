@@ -65,7 +65,7 @@ export default class CreatePerson extends Component {
   render() {
     return (
       <div>
-        <h3>Create New Person</h3>
+        <h3>Create Form</h3>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
             <label>Family name: </label>
@@ -108,7 +108,7 @@ export default class CreatePerson extends Component {
           <div className="form-group">
             <input
               type="submit"
-              value="Create Person Log"
+              value="Create Item"
               className="btn btn-primary"
             />
           </div>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-export default class CreateDocument extends Component {
+export default class EditDocument extends Component {
   constructor(props) {
     super(props);
 
@@ -13,6 +13,20 @@ export default class CreateDocument extends Component {
       code: "",
       description: "",
     };
+  }
+
+  componentDidMount1() {
+    axios
+      .get("http://localhost:5000/documents/" + this.props.match.params.id)
+      .then((response) => {
+        this.setState({
+          code: response.data.code,
+          description: response.data.description,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   onChangeCode(e) {
@@ -30,24 +44,31 @@ export default class CreateDocument extends Component {
   onSubmit(e) {
     e.preventDefault();
 
-    const document = {
+    const item = {
       code: this.state.code,
       description: this.state.description,
     };
 
-    console.log(document);
+    console.log(item);
 
     axios
-      .post("http://localhost:5000/documents/add", document)
+      .post(
+        "http://localhost:5000/documents/update/" + this.props.match.params.id,
+        item
+      )
       .then((res) => console.log(res.data));
 
     window.location = "/documents";
   }
 
   render() {
+    return <>Hello</>;
+  }
+
+  render1() {
     return (
       <div>
-        <h3>Create Document</h3>
+        <h3>Edit Document</h3>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
             <label>Code: </label>
@@ -70,7 +91,7 @@ export default class CreateDocument extends Component {
             />
           </div>
           <div className="form-group">
-            <input type="submit" value="Create" className="btn btn-primary" />
+            <input type="submit" value="Save" className="btn btn-primary" />
           </div>
         </form>
       </div>
