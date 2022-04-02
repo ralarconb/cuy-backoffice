@@ -7,7 +7,7 @@ const Item = (props) => (
     <td>{props.item.code}</td>
     <td>{props.item.description}</td>
     <td>
-      <Link to={"/edit/" + props.item._id}>Edit</Link> |{" "}
+      <Link to={"/documents/edit/" + props.item._id}>Edit</Link> |{" "}
       <a
         href="#"
         onClick={() => {
