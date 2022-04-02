@@ -10,6 +10,7 @@ import CreatePerson from "./components/CreatePerson";
 import Documents from "./components/Documents";
 import EditDocument from "./components/EditDocument";
 import CreateDocument from "./components/CreateDocument";
+import Users from "./components/Users";
 import Error from "./components/Error";
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/documents" element={<Documents />} />
           <Route path="/documents/:id" element={<EditDocument />} />
           <Route path="/documents/add" element={<CreateDocument />} />
+          <Route path="/users" element={<Users />} />
           <Route path="/*" element={<Error />} />
         </Routes>
       </div>
