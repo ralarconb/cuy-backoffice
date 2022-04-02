@@ -62,10 +62,6 @@ export default class EditDocument extends Component {
   }
 
   render() {
-    return <>Hello</>;
-  }
-
-  render1() {
     return (
       <div>
         <h3>Edit Document</h3>
