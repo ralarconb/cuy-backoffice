@@ -7,6 +7,7 @@ import Home from "./components/Home";
 import People from "./components/People";
 import Person from "./components/Person";
 import CreatePerson from "./components/CreatePerson";
+import Documents from "./components/Documents";
 import CreateDocument from "./components/CreateDocument";
 import Error from "./components/Error";
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/people" element={<People />} />
           <Route path="/people/:id" element={<Person />} />
           <Route path="/people/add" element={<CreatePerson />} />
+          <Route path="/documents" element={<Documents />} />
           <Route path="/documents/add" element={<CreateDocument />} />
           <Route path="/*" element={<Error />} />
         </Routes>

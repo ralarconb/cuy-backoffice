@@ -72,7 +72,7 @@ export default class CreateDocument extends Component {
           <div className="form-group">
             <input
               type="submit"
-              value="Create Person Log"
+              value="Create Document"
               className="btn btn-primary"
             />
           </div>
