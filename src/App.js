@@ -26,7 +26,7 @@ function App() {
           <Route path="/documents" element={<Documents />} />
           <Route path="/documents/:id" element={<EditDocument />} />
           <Route path="/documents/add" element={<CreateDocument />} />
-          {/* <Route path="/*" element={<Error />} /> */}
+          <Route path="/*" element={<Error />} />
         </Routes>
       </div>
     </BrowserRouter>

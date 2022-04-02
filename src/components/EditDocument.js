@@ -15,7 +15,9 @@ export default class EditDocument extends Component {
     };
   }
 
-  componentDidMount1() {
+  componentDidMount() {
+    console.log(this.props.params.id);
+    console.log(this.props.params._id);
     axios
       .get("http://localhost:5000/documents/" + this.props.match.params.id)
       .then((response) => {
