@@ -1,45 +1,53 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
+const url = "http://localhost:5000/users/";
 
 function Users() {
-  const [count, setCount] = useState(0);
   const [items, setItems] = useState([]);
 
-  axios
-    .get("http://localhost:5000/users/")
-    .then((response) => {
-      // console.log(response.data);
-      // setItems( ...items: response.data );
-      setItems({ items: response.data });
-      // setItems(response.data);
-      // setItems({ irresponse.data });
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  const getItems = async () => {
+    const response = await fetch(url);
+    const items = await response.json();
+    setItems(items);
+    console.log(items);
+  };
 
-  console.log(items);
+  useEffect(() => {
+    getItems();
+  }, []);
 
   return (
     <div>
-      <div>
-        <p>You clicked {count} times</p>
-        <button onClick={() => setCount(count + 1)}>Click me</button>
-      </div>
-      <h3>Document</h3>
+      <h3>Users</h3>
       <table className="table">
         <thead className="thead-light">
           <tr>
-            <th>User name</th>
+            <th>User Name</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {/* {items.map((item) => {
-            return item._id;
-          })} */}
+          {items.map((item) => {
+            return (
+              <tr>
+                <td>{item.name}</td>
+                <td>
+                  <Link to={"/users/" + item._id}>Edit</Link> |{" "}
+                  <a
+                    href="#"
+                    onClick={() => {
+                      console.log(item._id);
+                      //props.deleteItem(item._id);
+                    }}
+                  >
+                    Delete
+                  </a>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
-        {/* <tbody>{this.itemList()}</tbody> */}
       </table>
     </div>
   );
