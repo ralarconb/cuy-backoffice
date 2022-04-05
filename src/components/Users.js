@@ -5,15 +5,31 @@ import { useFetch } from "./useFetch";
 
 const url = "http://localhost:5000/users/";
 
+const Item = (props) => {
+  return (
+    <tr>
+      <td>{props.item.name}</td>
+      <td>
+        <Link to={"/users/" + props.item._id}>Edit</Link> |{" "}
+        <a
+          href="#"
+          onClick={() => {
+            deleteItem(props.item._id);
+          }}
+        >
+          Delete
+        </a>
+      </td>
+    </tr>
+  );
+};
+
+function deleteItem(id) {
+  console.log(id);
+}
+
 function Users() {
   const { loading, items } = useFetch(url);
-
-  const deleteItem = async (id) => {
-    axios.delete(url + id).then((response) => {
-      console.log(response.data);
-    });
-    // getItems();
-  };
 
   return (
     <div>
@@ -27,23 +43,7 @@ function Users() {
         </thead>
         <tbody>
           {items.map((item) => {
-            return (
-              <tr>
-                <td>{item.name}</td>
-                <td>
-                  <Link to={"/users/" + item._id}>Edit</Link> |{" "}
-                  <a
-                    href="#"
-                    onClick={() => {
-                      console.log(item._id);
-                      deleteItem(item._id);
-                    }}
-                  >
-                    Delete
-                  </a>
-                </td>
-              </tr>
-            );
+            return <Item item={item} key={item._id} deleteItem={deleteItem} />;
           })}
         </tbody>
       </table>
