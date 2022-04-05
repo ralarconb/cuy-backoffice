@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useFetch } from "./useFetch";
 
 const url = "http://localhost:5000/users/";
 
 function Users() {
-  const [items, setItems] = useState([]);
+  const { loading, items } = useFetch(url);
 
-  const getItems = async () => {
-    const response = await fetch(url);
-    const items = await response.json();
-    setItems(items);
-    console.log(items);
+  const deleteItem = async (id) => {
+    axios.delete(url + id).then((response) => {
+      console.log(response.data);
+    });
+    // getItems();
   };
-
-  useEffect(() => {
-    getItems();
-  }, []);
 
   return (
     <div>
@@ -38,7 +36,7 @@ function Users() {
                     href="#"
                     onClick={() => {
                       console.log(item._id);
-                      //props.deleteItem(item._id);
+                      deleteItem(item._id);
                     }}
                   >
                     Delete
