@@ -43,7 +43,7 @@ function Users() {
         </thead>
         <tbody>
           {items.map((item) => {
-            return <Item item={item} key={item._id} deleteItem={deleteItem} />;
+            return <Item item={item} deleteItem={deleteItem} key={item._id} />;
           })}
         </tbody>
       </table>
