@@ -11,6 +11,7 @@ import Documents from "./components/Documents";
 import EditDocument from "./components/EditDocument";
 import CreateDocument from "./components/CreateDocument";
 import Users from "./components/Users";
+import EditUser from "./components/EditUser";
 import CreateUser from "./components/CreateUser";
 import Error from "./components/Error";
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/documents/:id" element={<EditDocument />} />
           <Route path="/documents/add" element={<CreateDocument />} />
           <Route path="/users" element={<Users />} />
+          <Route path="/users/:id" element={<EditUser />} />
           <Route path="/users/add" element={<CreateUser />} />
           <Route path="/*" element={<Error />} />
         </Routes>
