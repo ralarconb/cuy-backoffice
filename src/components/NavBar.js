@@ -40,6 +40,11 @@ export default class Navbar extends Component {
                 Users
               </Link>
             </li>
+            <li className="navbar-item">
+              <Link to="/users/add" className="nav-link">
+                Create User
+              </Link>
+            </li>
           </ul>
         </div>
       </nav>
