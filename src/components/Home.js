@@ -2,9 +2,8 @@ import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
-    <div>
-      <p>Home</p>
-      <Link to="/">Back home</Link>
-    </div>
+    <section className="section">
+      <h2>Home</h2>
+    </section>
   );
 }
