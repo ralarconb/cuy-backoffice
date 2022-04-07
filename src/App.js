@@ -3,9 +3,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import SharedLayout from "./pages/SharedLayout";
-import Home from "./components/Home";
-import About from "./components/About";
-import Error from "./components/Error";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Error from "./pages/Error";
 import SharedPagesLayout from "./pages/SharedPagesLayout";
 import People from "./components/People";
 import Person from "./components/Person";

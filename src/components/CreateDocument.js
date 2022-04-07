@@ -47,7 +47,7 @@ export default class CreateDocument extends Component {
   render() {
     return (
       <div>
-        <h3>Create Document</h3>
+        <h2>Create Document</h2>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
             <label>Code: </label>

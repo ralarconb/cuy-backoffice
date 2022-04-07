@@ -65,7 +65,7 @@ export default class CreatePerson extends Component {
   render() {
     return (
       <div>
-        <h3>Create Form</h3>
+        <h2>Create Form</h2>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
             <label>Family name: </label>
