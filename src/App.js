@@ -6,15 +6,13 @@ import SharedLayout from "./pages/SharedLayout";
 import Home from "./components/Home";
 import About from "./components/About";
 import Error from "./components/Error";
-
+import SharedPagesLayout from "./pages/SharedPagesLayout";
 import People from "./components/People";
 import Person from "./components/Person";
 import CreatePerson from "./components/CreatePerson";
 import Documents from "./components/Documents";
 import EditDocument from "./components/EditDocument";
 import CreateDocument from "./components/CreateDocument";
-
-import SharedPagesLayout from "./pages/SharedPagesLayout";
 import Users from "./components/Users";
 import EditUser from "./components/EditUser";
 import CreateUser from "./components/CreateUser";
