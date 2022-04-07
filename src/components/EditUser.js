@@ -1,4 +1,4 @@
-import { useFetch } from "./useFetch";
+import { useFetch } from "../hooks/useFetch";
 import { useParams } from "react-router-dom";
 
 const url = "http://localhost:5000/users/";
