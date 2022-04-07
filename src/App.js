@@ -14,7 +14,7 @@ import Documents from "./components/Documents";
 import EditDocument from "./components/EditDocument";
 import CreateDocument from "./components/CreateDocument";
 
-import SharedUsersLayout from "./pages/SharedUsersLayout";
+import SharedPagesLayout from "./pages/SharedPagesLayout";
 import Users from "./components/Users";
 import EditUser from "./components/EditUser";
 import CreateUser from "./components/CreateUser";
@@ -27,14 +27,17 @@ function App() {
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="*" element={<Error />} />
-          <Route path="/people" element={<People />} />
-          <Route path="/people/:id" element={<Person />} />
-          <Route path="/people/add" element={<CreatePerson />} />
-          <Route path="/documents" element={<Documents />} />
-          <Route path="/documents/:id" element={<EditDocument />} />
-          <Route path="/documents/add" element={<CreateDocument />} />
-
-          <Route path="users" element={<SharedUsersLayout />}>
+          <Route path="people" element={<SharedPagesLayout />}>
+            <Route index element={<People />} />
+            <Route path=":id" element={<Person />} />
+            <Route path="add" element={<CreatePerson />} />
+          </Route>
+          <Route path="documents" element={<SharedPagesLayout />}>
+            <Route index element={<Documents />} />
+            <Route path=":id" element={<EditDocument />} />
+            <Route path="add" element={<CreateDocument />} />
+          </Route>
+          <Route path="users" element={<SharedPagesLayout />}>
             <Route index element={<Users />} />
             <Route path=":id" element={<EditUser />} />
             <Route path="add" element={<CreateUser />} />

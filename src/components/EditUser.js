@@ -1,5 +1,5 @@
 import { useFetch } from "./useFetch";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const url = "http://localhost:5000/users/";
 
@@ -44,7 +44,7 @@ function EditUser() {
           />
         </div>
         <div className="form-group">
-          <input type="submit" value="Create" className="btn btn-primary" />
+          <input type="submit" value="Save" className="btn btn-primary" />
         </div>
       </form>
     </div>
