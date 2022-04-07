@@ -7,23 +7,29 @@ function onChangeName(e) {
   console.log(e.target.value);
 }
 
+function onChangePassword(e) {
+  console.log(e.target.value);
+}
+
+function onSubmit(e) {
+  console.log(e);
+}
+
 function EditUser() {
   const { id } = useParams();
-  const { loading, items } = useFetch(url + id);
+  const { loading, items: item } = useFetch(url + id);
 
   return (
     <div>
       <h2>Change User</h2>
-      <form
-      /* onSubmit={this.onSubmit}*/
-      >
+      <form onSubmit={onSubmit}>
         <div className="form-group">
           <label>User Name: </label>
           <input
             type="text"
             required
             className="form-control"
-            value={items.name}
+            value={item.name}
             onChange={onChangeName}
           />
         </div>
@@ -33,8 +39,8 @@ function EditUser() {
             type="text"
             required
             className="form-control"
-            value={items.password}
-            // onChange={this.onChangePassword}
+            value={item.password}
+            onChange={onChangePassword}
           />
         </div>
         <div className="form-group">
