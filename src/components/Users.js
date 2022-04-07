@@ -27,7 +27,7 @@ function deleteItem(id) {
   console.log(id);
 }
 
-function Users() {
+export default function Users() {
   const { loading, items } = useFetch(url);
 
   return (
@@ -49,5 +49,3 @@ function Users() {
     </div>
   );
 }
-
-export default Users;

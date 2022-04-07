@@ -67,7 +67,7 @@ export default class People extends Component {
   render() {
     return (
       <div>
-        <h3>Logged People</h3>
+        <h2>People</h2>
         <table className="table">
           <thead className="thead-light">
             <tr>
