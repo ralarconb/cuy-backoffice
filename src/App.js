@@ -5,6 +5,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SharedLayout from "./pages/SharedLayout";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 import Error from "./pages/Error";
 import SharedPagesLayout from "./pages/SharedPagesLayout";
 import People from "./components/People";
@@ -24,6 +26,8 @@ function App() {
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
+          <Route path="register" element={<Register />} />
+          <Route path="login" element={<Login />} />
           <Route path="*" element={<Error />} />
           <Route path="people" element={<SharedPagesLayout />}>
             <Route index element={<People />} />
